@@ -1,0 +1,36 @@
+// Vectors as closures. vector() is the constructor. It returns a function that
+// takes the name of a "method" and gives back the result, so v("x") reads a
+// field and v("add") gives back a function that adds another vector to v.
+fun vector(x, y) {
+  fun add(other) {
+    return vector(x + other("x"), y + other("y"));
+  }
+
+  fun show() {
+    return "(" + str(x) + ", " + str(y) + ")";
+  }
+
+  fun object(message) {
+    if (message == "x") return x;
+    if (message == "y") return y;
+    if (message == "add") return add;
+    if (message == "show") return show;
+    print "Unknown method " + message + ".";
+    return nil;
+  }
+
+  return object;
+}
+
+var a = vector(1, 2);
+var b = vector(3, 4);
+var c = a("add")(b);
+
+print c("x");
+print c("y");
+print a("show")() + " + " + b("show")() + " = " + c("show")();
+
+// Each vector keeps its own x and y, and adding never changes the originals.
+var d = c("add")(c)("add")(a);
+print d("show")();
+print a("show")();

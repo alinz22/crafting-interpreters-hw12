@@ -1,0 +1,18 @@
+// Reverses strings one character at a time with substr().
+fun reverse(s) {
+  var result = "";
+  for (var i = len(s); i > 0; i = i - 1) {
+    result = result + substr(s, i - 1, i);
+  }
+  return result;
+}
+
+fun check(word) {
+  var verdict = " is not a palindrome";
+  if (reverse(word) == word) verdict = " is a palindrome";
+  print word + verdict;
+}
+
+check("racecar");
+check("lox");
+print reverse("stressed");

@@ -1,0 +1,14 @@
+// Declares a helper function inside a hot loop. The helper captures nothing,
+// so with Challenge 1 no closure gets allocated for it.
+fun run() {
+  var total = 0;
+  for (var i = 0; i < 3000000; i = i + 1) {
+    fun twice(n) { return n + n; }
+    total = total + twice(i);
+  }
+  return total;
+}
+
+var start = clock();
+run();
+print clock() - start;

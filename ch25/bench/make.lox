@@ -1,0 +1,13 @@
+// Creates a new closure on every iteration, and each one is called once.
+fun run() {
+  var total = 0;
+  for (var i = 0; i < 2000000; i = i + 1) {
+    fun add(n) { return n + i; }
+    total = total + add(1);
+  }
+  return total;
+}
+
+var start = clock();
+run();
+print clock() - start;

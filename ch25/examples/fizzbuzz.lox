@@ -1,0 +1,15 @@
+// Lox has no % operator, but floor() makes one.
+fun mod(a, b) {
+  return a - floor(a / b) * b;
+}
+
+var line = "";
+for (var i = 1; i <= 15; i = i + 1) {
+  var word = "";
+  if (mod(i, 3) == 0) word = "Fizz";
+  if (mod(i, 5) == 0) word = word + "Buzz";
+  if (word == "") word = str(i);
+  line = line + word;
+  if (i < 15) line = line + " ";
+}
+print line;

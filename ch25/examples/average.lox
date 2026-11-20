@@ -1,0 +1,21 @@
+// Reads numbers until a blank line or the end of input, then reports them.
+var total = 0;
+var count = 0;
+var biggest = nil;
+
+var line = input();
+while (line != nil and line != "") {
+  var n = num(line);
+  if (n == nil) {
+    print "skipping '" + line + "'";
+  } else {
+    total = total + n;
+    count = count + 1;
+    if (biggest == nil or n > biggest) biggest = n;
+  }
+  line = input();
+}
+
+print "count " + str(count);
+print "average " + str(total / count);
+print "biggest " + str(biggest);

@@ -1,0 +1,8 @@
+*.o
+clox
+*.dSYM
+*.docx
+*.txt
+make_doc.py
+clox_frameip
+clox_*

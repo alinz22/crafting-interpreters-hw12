@@ -1,0 +1,15 @@
+// Prints the primes below 50, only trying divisors up to the square root.
+fun isPrime(n) {
+  if (n < 2) return false;
+  var limit = floor(sqrt(n));
+  for (var d = 2; d <= limit; d = d + 1) {
+    if (n / d == floor(n / d)) return false;
+  }
+  return true;
+}
+
+var found = "";
+for (var n = 2; n < 50; n = n + 1) {
+  if (isPrime(n)) found = found + str(n) + " ";
+}
+print substr(found, 0, len(found) - 1);
